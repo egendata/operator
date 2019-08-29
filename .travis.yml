@@ -1,0 +1,32 @@
+# The jobs section declares jobs available in this build context
+jobs:
+  include:
+    # lint and run tests
+    - stage: "lint-and-test"
+      name: "Lint, run tests"
+      language: node_js
+      install:
+        - npm ci
+      script:
+        - npm run testAndLint
+
+    - stage: publish
+      name: "Run semantic-release and publish a new version"
+      language: node_js
+      install:
+        - npm ci
+      script:
+        - npx semantic-release
+
+# Flow control
+# This section defines the order in which stages are run and when to run certain stages
+stages:
+  - name: lint-and-test
+    if: branch != master AND tag IS NOT present
+  - name: publish
+    if: (branch = master AND type != pull_request)
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change
