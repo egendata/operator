@@ -12,7 +12,8 @@
     "integration": "jest -c jest.integration.config.js",
     "integration:watch": "jest -c jest.integration.config.js --watchAll",
     "lint": "eslint '**/*.js'",
-    "migrate": "node-pg-migrate"
+    "migrate": "node-pg-migrate",
+    "testAndLint": "npm test && npm run lint"
   },
   "contributors": [
     "Adam Näslund <adam.naslund@iteam.se>",
