@@ -4,9 +4,19 @@
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
     "@semantic-release/github",
-    ["@semantic-release/git", {
-      "assets": ["package.json"],
-      "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
-    }]
+    [
+      "@semantic-release/git",
+      {
+        "assets": ["package.json"],
+        "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
+      }
+    ],
+    [
+      "semantic-release-docker",
+      {
+        "registryUrl": "docker.io",
+        "name": "jobtechswe/mydata-operator"
+      }
+    ]
   ]
 }
