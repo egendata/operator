@@ -46,7 +46,7 @@
     "moment": "2.24.0",
     "morgan": "1.9.1",
     "node-pg-migrate": "3.20.0",
-    "pg": "7.11.0",
+    "pg": "7.12.1",
     "uuid": "3.3.2"
   },
   "devDependencies": {
