@@ -2,7 +2,6 @@
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
-    "@semantic-release/changelog",
     "@semantic-release/github",
     [
       "@semantic-release/git",
@@ -16,6 +15,12 @@
       {
         "registryUrl": "docker.io",
         "name": "jobtechswe/mydata-operator"
+      }
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        "publishCmd": "bash ./.deploy.bash ${nextRelease.version}"
       }
     ]
   ]

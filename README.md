@@ -1,4 +1,10 @@
-# Egendata-operator
+# Egendata operator
+
+![License](https://flat.badgen.net/github/license/egendata/operator)
+![Dependabot](https://flat.badgen.net/dependabot/egendata/operator?icon=dependabot)
+![Travis CI](https://flat.badgen.net/travis/egendata/operator?icon=travis)
+![Github release](https://flat.badgen.net/github/release/egendata/operator?icon=github)
+
 Backend for managing consents and data flow
 
 ## Configuration
