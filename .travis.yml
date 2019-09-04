@@ -21,7 +21,6 @@ jobs:
         - export PATH=$PATH:/opt/openshift
         - echo $OPENSHIFT_CERT | base64 --decode > /tmp/openshift.crt
       script:
-        - docker build -t jobtechswe/mydata-operator .
         - npx semantic-release
 
 # Flow control

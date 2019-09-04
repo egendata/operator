@@ -17,6 +17,12 @@
       }
     ],
     [
+      "@semantic-release/exec",
+      {
+        "publishCmd": "docker build -t jobtechswe/mydata-operator ."
+      }
+    ],
+    [
       "semantic-release-docker",
       {
         "registryUrl": "docker.io",
