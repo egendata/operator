@@ -40,7 +40,7 @@
     "elastic-apm-node": "2.11.1",
     "express": "4.16.4",
     "http-errors": "1.7.2",
-    "ioredis": "3.2.2",
+    "ioredis": "4.14.1",
     "memory-fs": "0.4.1",
     "merge": "1.2.1",
     "moment": "2.24.0",
