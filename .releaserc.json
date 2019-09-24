@@ -2,12 +2,19 @@
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
-    "@semantic-release/github",
+    "@semantic-release/changelog",
     [
-      "@semantic-release/git",
+      "@semantic-release/npm",
       {
-        "assets": ["package.json"],
-        "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
+        "npmPublish": false
+      }
+    ],
+    "@semantic-release/github",
+    "@semantic-release/git",
+    [
+      "@semantic-release/exec",
+      {
+        "publishCmd": "docker build -t jobtechswe/mydata-operator ."
       }
     ],
     [
