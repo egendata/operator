@@ -10,6 +10,7 @@ COPY ./package.json .
 COPY ./package-lock.json .
 RUN npm install --production
 
+COPY ./scripts ./scripts
 COPY ./migrations ./migrations
 COPY ./lib ./lib
 

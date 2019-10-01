@@ -1,6 +1,6 @@
-const pds = require(`../../lib/adapters/pds`)
-const dropbox = require(`../../lib/adapters/pds/dropbox`)
-jest.mock(`../../lib/adapters/pds/dropbox`)
+const pds = require('../../lib/adapters/pds')
+const dropbox = require('../../lib/adapters/pds/dropbox')
+jest.mock('../../lib/adapters/pds/dropbox')
 
 describe('adapters/pds', () => {
   describe('#get', () => {

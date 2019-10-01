@@ -56,10 +56,12 @@ describe('tokens', () => {
         sub: 'd82054d3-4115-49a0-ac5c-3325273d53b2',
         aud: 'https://smoothoperator.com',
         iss: 'https://mycv.work',
-        paths: [ {
-          domain,
-          area
-        } ],
+        paths: [
+          {
+            domain,
+            area
+          }
+        ],
         iat: 1562323351,
         exp: 1562326951
       }
