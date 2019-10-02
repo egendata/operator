@@ -1,6 +1,6 @@
 {
   "name": "mydata-operator",
-  "version": "0.30.4",
+  "version": "0.31.0",
   "description": "Backend for managing consents and data flow",
   "scripts": {
     "start": "node ./lib/server.js",
