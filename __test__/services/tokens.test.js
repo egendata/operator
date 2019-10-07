@@ -20,14 +20,14 @@ describe('tokens', () => {
     let payloadFromDevice, header, deviceKey, connectionToken
     beforeEach(async () => {
       deviceKey = await JWK.generate('RSA', 1024, {
-        kid: 'mydata://account/jwks/account_key',
+        kid: 'egendata://account/jwks/account_key',
         use: 'sig'
       })
       payloadFromDevice = {
         type: 'CONNECTION',
         sid: 'f0b5bef5-c137-4211-adaf-a0d6a37be8b1',
         aud: 'https://mycv.work',
-        iss: 'mydata://account',
+        iss: 'egendata://account',
         sub: 'b09b4355-8c95-40a4-a3dd-e176c4baab73'
       }
       header = {

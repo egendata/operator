@@ -13,7 +13,7 @@ describe('accounts', () => {
       }
 
       const jwk = await JWK.generate('RSA', 1024, {
-        kid: 'mydata://account/jwks/account_key',
+        kid: 'egendata://account/jwks/account_key',
         use: 'sig'
       }, true)
       header = {
@@ -21,7 +21,7 @@ describe('accounts', () => {
       }
       payload = {
         type: 'ACCOUNT_REGISTRATION',
-        iss: `mydata://account/${jwk.thumbprint}`,
+        iss: `egendata://account/${jwk.thumbprint}`,
         pds: {
           provider: 'dropbox',
           access_token: 'foobar'
