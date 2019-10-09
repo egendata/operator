@@ -1,3 +1,10 @@
+## [0.31.1](https://github.com/egendata/operator/compare/v0.31.0...v0.31.1) (2019-10-09)
+
+
+### Bug Fixes
+
+* 🐛 setting the keys correctly for production NODE_ENV ([#52](https://github.com/egendata/operator/issues/52)) ([cb22cb3](https://github.com/egendata/operator/commit/cb22cb3))
+
 # [0.31.0](https://github.com/egendata/operator/compare/v0.30.4...v0.31.0) (2019-10-02)
 
 
