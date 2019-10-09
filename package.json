@@ -1,5 +1,5 @@
 {
-  "name": "mydata-operator",
+  "name": "egendata-operator",
   "version": "0.31.1",
   "description": "Backend for managing consents and data flow",
   "scripts": {
