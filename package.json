@@ -72,7 +72,7 @@
     "jest": "^24.9.0",
     "jest-spec-reporter": "^1.0.8",
     "lint-staged": "^9.4.2",
-    "nodemon": "^1.19.3",
+    "nodemon": "^1.19.4",
     "object-path": "^0.11.4",
     "semantic-release": "^15.13.27",
     "semantic-release-docker": "^2.2.0",
