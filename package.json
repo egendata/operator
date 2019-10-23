@@ -37,7 +37,7 @@
     "cors": "2.8.5",
     "dotenv": "8.2.0",
     "dropbox-fs": "0.3.1",
-    "elastic-apm-node": "3.0.0",
+    "elastic-apm-node": "3.1.0",
     "express": "4.17.1",
     "http-errors": "1.7.3",
     "memory-fs": "0.5.0",
