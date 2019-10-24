@@ -1,3 +1,10 @@
+# [0.32.0](https://github.com/egendata/operator/compare/v0.31.1...v0.32.0) (2019-10-24)
+
+
+### Features
+
+* 🎸 remove word api from routes ([#58](https://github.com/egendata/operator/issues/58)) ([33d77e3](https://github.com/egendata/operator/commit/33d77e329076930ead22b7f6770a824409085c0c))
+
 ## [0.31.1](https://github.com/egendata/operator/compare/v0.31.0...v0.31.1) (2019-10-09)
 
 
