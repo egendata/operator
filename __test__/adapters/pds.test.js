@@ -32,7 +32,11 @@ describe('adapters/pds', () => {
       it('wraps fs with promises', () => {
         const pdsFs = pds.get(account)
         const p = pdsFs.readFile('./path', { encoding: 'utf8' })
-        expect(fs.readFile).toHaveBeenCalledWith('./path', { encoding: 'utf8' }, expect.any(Function))
+        expect(fs.readFile).toHaveBeenCalledWith(
+          './path',
+          { encoding: 'utf8' },
+          expect.any(Function)
+        )
         expect(p.toString()).toEqual('[object Promise]')
       })
       it('adds mkdirp', async () => {
@@ -47,12 +51,28 @@ describe('adapters/pds', () => {
 
         await pdsFs.mkdirp('/foo/bar/baz')
 
-        expect(fs.stat).toHaveBeenNthCalledWith(1, '/foo/bar/baz', expect.any(Function))
-        expect(fs.stat).toHaveBeenNthCalledWith(2, '/foo/bar', expect.any(Function))
+        expect(fs.stat).toHaveBeenNthCalledWith(
+          1,
+          '/foo/bar/baz',
+          expect.any(Function)
+        )
+        expect(fs.stat).toHaveBeenNthCalledWith(
+          2,
+          '/foo/bar',
+          expect.any(Function)
+        )
         expect(fs.stat).toHaveBeenNthCalledWith(3, '/foo', expect.any(Function))
 
-        expect(fs.mkdir).toHaveBeenNthCalledWith(1, '/foo/bar', expect.any(Function))
-        expect(fs.mkdir).toHaveBeenNthCalledWith(2, '/foo/bar/baz', expect.any(Function))
+        expect(fs.mkdir).toHaveBeenNthCalledWith(
+          1,
+          '/foo/bar',
+          expect.any(Function)
+        )
+        expect(fs.mkdir).toHaveBeenNthCalledWith(
+          2,
+          '/foo/bar/baz',
+          expect.any(Function)
+        )
       })
       it('adds outputFile (writeFile + mkdirp)', async () => {
         const pdsFs = pds.get(account)
@@ -67,16 +87,64 @@ describe('adapters/pds', () => {
 
         await pdsFs.outputFile('/foo/bar/baz/data.json', '{"foo": "bar"}')
 
-        expect(fs.writeFile).toHaveBeenNthCalledWith(1, '/foo/bar/baz/data.json', '{"foo": "bar"}', expect.any(Function))
+        expect(fs.writeFile).toHaveBeenNthCalledWith(
+          1,
+          '/foo/bar/baz/data.json',
+          '{"foo": "bar"}',
+          expect.any(Function)
+        )
 
-        expect(fs.stat).toHaveBeenNthCalledWith(1, '/foo/bar/baz', expect.any(Function))
-        expect(fs.stat).toHaveBeenNthCalledWith(2, '/foo/bar', expect.any(Function))
+        expect(fs.stat).toHaveBeenNthCalledWith(
+          1,
+          '/foo/bar/baz',
+          expect.any(Function)
+        )
+        expect(fs.stat).toHaveBeenNthCalledWith(
+          2,
+          '/foo/bar',
+          expect.any(Function)
+        )
         expect(fs.stat).toHaveBeenNthCalledWith(3, '/foo', expect.any(Function))
 
-        expect(fs.mkdir).toHaveBeenNthCalledWith(1, '/foo/bar', expect.any(Function))
-        expect(fs.mkdir).toHaveBeenNthCalledWith(2, '/foo/bar/baz', expect.any(Function))
+        expect(fs.mkdir).toHaveBeenNthCalledWith(
+          1,
+          '/foo/bar',
+          expect.any(Function)
+        )
+        expect(fs.mkdir).toHaveBeenNthCalledWith(
+          2,
+          '/foo/bar/baz',
+          expect.any(Function)
+        )
 
-        expect(fs.writeFile).toHaveBeenNthCalledWith(2, '/foo/bar/baz/data.json', '{"foo": "bar"}', expect.any(Function))
+        expect(fs.writeFile).toHaveBeenNthCalledWith(
+          2,
+          '/foo/bar/baz/data.json',
+          '{"foo": "bar"}',
+          expect.any(Function)
+        )
+      })
+    })
+
+    describe('generic', () => {
+      let account, pdsCredentials
+      beforeEach(() => {
+        pdsCredentials = {
+          access_token: 'some_weird_string',
+          token_type: 'bearer',
+          uid: '123456',
+          account_id: 'dbid:some_other_weird_string'
+        }
+        account = {
+          pdsProvider: 'memory',
+          pdsCredentials
+        }
+      })
+      it('returns a readFile function', () => {
+        const pdsFs = pds.get(account)
+        expect(pdsFs).toHaveProperty('readFile')
+        const p = pdsFs.readFile('./path', { encoding: 'utf8' })
+        expect(p.toString()).toEqual('[object Promise]')
       })
     })
   })
