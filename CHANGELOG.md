@@ -1,3 +1,10 @@
+## [0.32.1](https://github.com/egendata/operator/compare/v0.32.0...v0.32.1) (2019-10-30)
+
+
+### Bug Fixes
+
+* 🐛 revert memory-fs bump ([#74](https://github.com/egendata/operator/issues/74)) ([c2dfffb](https://github.com/egendata/operator/commit/c2dfffba8017459daf6a5b8d30b9911d1c204950))
+
 # [0.32.0](https://github.com/egendata/operator/compare/v0.31.1...v0.32.0) (2019-10-24)
 
 
