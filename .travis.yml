@@ -37,9 +37,11 @@ jobs:
         - chmod +x docker-compose
         - sudo mv docker-compose /usr/local/bin
         - sudo apt-get install libgconf-2-4 # cypress needs this
+        - git clone --depth=50 https://github.com/egendata/e2e.git egendata/e2e
       install:
         - npm ci
       script:
+        - ls -la
         - echo "running stage e2e"
 
 # Flow control
