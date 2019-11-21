@@ -11,6 +11,7 @@ jobs:
       install:
         - npm ci
       script:
+        - echo "running stage lint and test"
         - npm run testAndLint
 
     - stage: publish
@@ -39,7 +40,7 @@ jobs:
       install:
         - npm ci
       script:
-        - npm run testAndLint
+        - echo "running stage e2e"
 
 # Flow control
 # This section defines the order in which stages are run and when to run certain stages
