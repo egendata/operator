@@ -42,8 +42,8 @@ jobs:
         - npm ci
       script:
         - cd .. && ls -la
-        - cd e2e && docker-compose up -d
-        - sleep 10 && docker-compose down
+        - cd e2e && docker-compose up
+        - sleep 20 && docker-compose down
         - echo "running stage e2e"
 
 # Flow control
