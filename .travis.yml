@@ -42,7 +42,7 @@ jobs:
         - npm ci
       script:
         - cd .. && ls -la
-        - cd e2e && docker-compose up
+        - cd e2e && docker-compose -f docker-compose.yml -f docker-overrides/operator.yml up
         - sleep 20 && docker-compose down
         - echo "running stage e2e"
 
