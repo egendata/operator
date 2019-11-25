@@ -40,6 +40,7 @@ jobs:
         - git clone -b feat/dockerize https://github.com/egendata/e2e.git ../e2e
       install:
         - npm ci
+        - cd ../e2e && npm ci
       script:
         - cd .. && ls -la
         - cd e2e && docker-compose -f docker-compose.yml -f docker-overrides/operator.yml up -d
