@@ -44,6 +44,7 @@ jobs:
       script:
         - cd .. && ls -la
         - cd e2e && docker-compose -f docker-compose.yml -f docker-overrides/operator.yml up -d
+        - hostname -I
         - CYPRESS_baseUrl=http://localhost:4000 CYPRESS_APP_SERVER_URL=http://localhost:1338 npm run test-e2e
         - sleep 20 && docker-compose down
         - echo "running stage e2e"
