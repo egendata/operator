@@ -5,27 +5,27 @@ env:
 jobs:
   include:
     # lint and run tests
-    - stage: "lint-and-test"
-      name: "Lint, run tests"
-      language: node_js
-      install:
-        - npm ci
-      script:
-        - echo "running stage lint and test"
-        - npm run testAndLint
+    # - stage: "lint-and-test"
+    #   name: "Lint, run tests"
+    #   language: node_js
+    #   install:
+    #     - npm ci
+    #   script:
+    #     - echo "running stage lint and test"
+    #     - npm run testAndLint
 
-    - stage: publish
-      name: "Run semantic-release and publish a new version"
-      language: node_js
-      install:
-        - npm ci
-        # Install a new version of the openshift cli
-        - mkdir -p /opt/openshift
-        - wget -qO- https://github.com/openshift/origin/releases/download/v3.11.0/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz | tar xvzf - -C /opt/openshift --strip-components=1
-        - export PATH=$PATH:/opt/openshift
-        - echo $OPENSHIFT_CERT | base64 --decode > /tmp/openshift.crt
-      script:
-        - npx semantic-release
+    # - stage: publish
+    #   name: "Run semantic-release and publish a new version"
+    #   language: node_js
+    #   install:
+    #     - npm ci
+    #     # Install a new version of the openshift cli
+    #     - mkdir -p /opt/openshift
+    #     - wget -qO- https://github.com/openshift/origin/releases/download/v3.11.0/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz | tar xvzf - -C /opt/openshift --strip-components=1
+    #     - export PATH=$PATH:/opt/openshift
+    #     - echo $OPENSHIFT_CERT | base64 --decode > /tmp/openshift.crt
+    #   script:
+    #     - npx semantic-release
 
     - stage: e2e
       services:
@@ -52,8 +52,8 @@ jobs:
 # Flow control
 # This section defines the order in which stages are run and when to run certain stages
 stages:
-  - name: lint-and-test
-    if: branch != master AND tag IS NOT present AND type != pull_request
+  # - name: lint-and-test
+  #   if: branch != master AND tag IS NOT present AND type != pull_request
   - name: publish
     if: (branch = master AND type != pull_request)
   - name: e2e
