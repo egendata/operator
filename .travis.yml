@@ -42,7 +42,7 @@ jobs:
         - npm ci
         - cd ../e2e && npm ci
       script:
-        - cd ../e2e && HOST_IP=$(ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+') npm run test:local:operator
+        - cd ../e2e && npm run test:local:operator
 
 # Flow control
 # This section defines the order in which stages are run and when to run certain stages
