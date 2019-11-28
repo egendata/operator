@@ -28,6 +28,7 @@ jobs:
         - npx semantic-release
 
     - stage: e2e
+      language: node_js
       services:
         - docker
       before_install:
