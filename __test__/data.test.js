@@ -457,8 +457,23 @@ describe('data', () => {
       })
     })
     describe('without data', () => {
-      it.skip('needs tests', () => {
+      it('sends a RECIPIENTS_READ_RESPONSE payload on success', async () => {
+        await readRecipients({ header, payload }, res, next)
 
+        expect(res.status).toHaveBeenCalledWith(200)
+        expect(res.set).toHaveBeenCalledWith('Content-Type', 'application/jwt')
+        expect(res.send).toHaveBeenCalledWith(expect.any(String))
+      })
+      it('sends a valid RECIPIENTS_READ_RESPONSE token on success', async () => {
+        await readRecipients({ header, payload }, res, next)
+
+        const [token] = res.send.mock.calls[0]
+        const claimsSet = JWT.decode(token)
+        const expectedType = 'RECIPIENTS_READ_RESPONSE'
+
+        expect(claimsSet.type).toEqual(expectedType)
+        await expect(schemas[expectedType].validate(claimsSet))
+          .resolves.not.toThrow()
       })
     })
   })
