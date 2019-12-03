@@ -49,7 +49,7 @@ jobs:
 # This section defines the order in which stages are run and when to run certain stages
 stages:
   - name: lint-and-test
-    if: branch != master AND tag IS NOT present AND type != pull_request
+    if: branch != master AND tag IS NOT present
   - name: publish
     if: (branch = master AND type != pull_request)
   - name: e2e
