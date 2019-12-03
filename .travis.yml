@@ -43,7 +43,7 @@ jobs:
         - npm ci
         - npm ci --prefix ../e2e
       script:
-        - cd ../e2e && npm run test:local:operator
+        - npm run test:local:operator --prefix ../e2e
 
 # Flow control
 # This section defines the order in which stages are run and when to run certain stages
