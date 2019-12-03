@@ -41,7 +41,7 @@ jobs:
         - git clone https://github.com/egendata/e2e.git ../e2e
       install:
         - npm ci
-        - cd ../e2e && npm ci
+        - npm ci --prefix ../e2e
       script:
         - cd ../e2e && npm run test:local:operator
 
