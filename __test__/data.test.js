@@ -353,7 +353,7 @@ describe('data', () => {
         }
       }
       payload = {
-        type: 'DATA_READ_REQUEST',
+        type: 'RECIPIENTS_READ_REQUEST',
         sub: 'd82054d3-4115-49a0-ac5c-3325273d53b2',
         aud: 'https://smoothoperator.com',
         iss: 'https://mycv.work',
