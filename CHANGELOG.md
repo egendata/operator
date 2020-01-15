@@ -1,3 +1,10 @@
+## [0.33.1](https://github.com/egendata/operator/compare/v0.33.0...v0.33.1) (2020-01-15)
+
+
+### Bug Fixes
+
+* 🐛 Updated insecure dependendies ([#105](https://github.com/egendata/operator/issues/105)) ([0a93a0e](https://github.com/egendata/operator/commit/0a93a0ebaeb0c5090a6f3a741b5e527f01a6e6ab))
+
 # [0.33.0](https://github.com/egendata/operator/compare/v0.32.1...v0.33.0) (2020-01-15)
 
 
