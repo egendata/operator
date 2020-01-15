@@ -1,3 +1,10 @@
+# [0.33.0](https://github.com/egendata/operator/compare/v0.32.1...v0.33.0) (2020-01-15)
+
+
+### Features
+
+* 🎸 read recipients ([#94](https://github.com/egendata/operator/issues/94)) ([42b87cc](https://github.com/egendata/operator/commit/42b87cc5477e24c02893dcb481379ea5233f525e))
+
 ## [0.32.1](https://github.com/egendata/operator/compare/v0.32.0...v0.32.1) (2019-10-30)
 
 
