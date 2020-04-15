@@ -1,12 +1,12 @@
 const { JWT } = require('@panva/jose')
 const { schemas } = require('@egendata/messaging')
-const { writePermission, readPermission } = require('../lib/sqlStatements')
+const { getWritePermissionPdsData, readPermission } = require('../lib/sqlStatements')
 const { write, read, readRecipients } = require('../lib/data')
 const { client } = require('../__mocks__/pg')
 const pdsAdapter = require('../lib/adapters/pds')
 
 jest.mock('../lib/sqlStatements', () => ({
-  writePermission: jest.fn().mockName('sqlStatements.writePermission')
+  getWritePermissionPdsData: jest.fn().mockName('sqlStatements.getWritePermissionPdsData')
     .mockReturnValue(['sql', []]),
   readPermission: jest.fn().mockName('sqlStatements.readPermission')
     .mockReturnValue(['sql', []])
@@ -18,19 +18,19 @@ jest.mock('../lib/adapters/pds', () => ({
 describe('data', () => {
   let header, payload, dbResult
   let pds
-  let res, next
+  let res, next, send
   beforeEach(() => {
     pds = {
       outputFile: jest.fn().mockName('pds.outputFile').mockResolvedValue(),
       readFile: jest.fn().mockName('pds.readFile').mockResolvedValue()
     }
     pdsAdapter.get.mockReturnValue(pds)
-
+    send = jest.fn().mockName('res.send')
     res = {
       set: jest.fn().mockName('res.set'),
       status: jest.fn().mockName('res.status'),
-      send: jest.fn().mockName('res.send'),
-      sendStatus: jest.fn().mockName('res.sendStatus')
+      send,
+      sendStatus: jest.fn().mockName('res.sendStatus').mockReturnValue({ send })
     }
     res.set.mockReturnValue(res)
     res.status.mockReturnValue(res)
@@ -75,17 +75,32 @@ describe('data', () => {
         ]
       }
 
-      client.query.mockImplementation(async () => dbResult)
+      client.query.mockImplementation(() => dbResult)
     })
-    it('calls sqlStatements.writePermission with the correct arguments', async () => {
+    it('calls sqlStatements.getWritePermissionPdsData with the correct arguments', async () => {
       await write({ header, payload }, res, next)
 
-      expect(writePermission).toHaveBeenCalledWith({
+      expect(getWritePermissionPdsData).toHaveBeenCalledWith({
         connectionId: '26eb214f-287b-4def-943c-55a6eefa2d91',
         domain: 'https://mycv.work',
         area: 'favorite_cats',
         serviceId: 'https://mycv.work'
       })
+    })
+    it('does not write when no valid permission exists', async () => {
+      client.query.mockImplementation(() => ({ rows: [] }))
+
+      await write({ header, payload }, res, next)
+
+      expect(pds.outputFile).not.toHaveBeenCalled()
+    })
+    it('returns 403 - Forbidden when no valid permission exists', async () => {
+      client.query.mockImplementation(() => ({ rows: [] }))
+
+      await write({ header, payload }, res, next)
+
+      expect(res.sendStatus).toHaveBeenCalledWith(403)
+      expect(res.send).toHaveBeenCalledWith('No valid permission')
     })
     it('gets the correct PDS adapter', async () => {
       await write({ header, payload }, res, next)
