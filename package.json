@@ -69,7 +69,7 @@
     "get-value": "^3.0.1",
     "husky": "^4.0.10",
     "ip": "^1.1.5",
-    "jest": "^24.9.0",
+    "jest": "^25.4.0",
     "jest-spec-reporter": "^1.0.10",
     "lint-staged": "^9.5.0",
     "nodemon": "^2.0.2",
