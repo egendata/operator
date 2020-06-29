@@ -45,7 +45,7 @@
     "moment": "2.24.0",
     "morgan": "1.9.1",
     "nconf": "0.10.0",
-    "node-pg-migrate": "3.23.3",
+    "node-pg-migrate": "5.2.0",
     "pg": "7.12.1",
     "uuid": "3.3.3",
     "winston": "3.2.1"
