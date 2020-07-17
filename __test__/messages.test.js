@@ -8,7 +8,9 @@ jest.mock('../lib/accounts', () => ({
 }))
 jest.mock('../lib/data', () => ({
   read: jest.fn(),
-  write: jest.fn()
+  write: jest.fn(),
+  readRecipients: jest.fn(),
+  writeRecipients: jest.fn()
 }))
 jest.mock('../lib/services', () => ({
   registerService: jest.fn(),
@@ -78,6 +80,24 @@ describe('messages', () => {
         const token = 'sdhsdjhfgsjhfg'
         await handle({ header, payload, token }, res, next)
         expect(services.registerService).toHaveBeenCalledWith({ header, payload, token }, res, next)
+      })
+    })
+    describe('RECIPIENTS_READ_REQUEST', () => {
+      it('can get recipients for data', async () => {
+        const header = {}
+        const payload = { type: 'RECIPIENTS_READ_REQUEST' }
+        const token = 'sdhsdjhfgsjhfg'
+        await handle({ header, payload, token }, res, next)
+        expect(data.readRecipients).toHaveBeenCalledWith({ header, payload, token }, res, next)
+      })
+    })
+    describe('RECIPIENTS_WRITE', () => {
+      it('can write recipients for data', async () => {
+        const header = {}
+        const payload = { type: 'RECIPIENTS_WRITE' }
+        const token = 'sdhsdjhfgsjhfg'
+        await handle({ header, payload, token }, res, next)
+        expect(data.writeRecipients).toHaveBeenCalledWith({ header, payload, token }, res, next)
       })
     })
   })
