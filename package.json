@@ -39,7 +39,7 @@
     "dropbox-fs": "0.3.1",
     "elastic-apm-node": "3.3.0",
     "express": "4.17.1",
-    "http-errors": "1.7.3",
+    "http-errors": "1.8.0",
     "memory-fs": "0.4.1",
     "merge": "1.2.1",
     "moment": "2.24.0",
