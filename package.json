@@ -47,7 +47,7 @@
     "nconf": "0.10.0",
     "node-pg-migrate": "5.8.1",
     "pg": "8.3.0",
-    "uuid": "8.3.0",
+    "uuid": "8.3.2",
     "winston": "3.3.3"
   },
   "devDependencies": {
