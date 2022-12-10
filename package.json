@@ -38,7 +38,7 @@
     "dotenv": "8.2.0",
     "dropbox-fs": "0.3.1",
     "elastic-apm-node": "3.7.0",
-    "express": "4.17.1",
+    "express": "4.17.3",
     "http-errors": "1.8.0",
     "memory-fs": "0.4.1",
     "merge": "1.2.1",
